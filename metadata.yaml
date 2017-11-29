@@ -1,0 +1,15 @@
+name: streambundle-api
+summary: This charm will deploy the API for the streambundle.
+maintainer: Sébastien Pattyn <sebastien.pattyn@tengu.io>
+description: |
+  This charm will deploy the API for the streambundle.
+tags:
+  - misc
+subordinate: false
+requires:
+  db:
+    interface: mongodb-database
+provides:
+  bundleapi:
+    interface: http
+series: ['xenial']

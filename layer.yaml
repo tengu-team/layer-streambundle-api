@@ -1,0 +1,4 @@
+includes: ['layer:basic', 'layer:apt', 'layer:nginx-passenger', 'interface:http', 'interface:mongodb-database']
+options:
+  apt:
+    packages: ['python3-pip']
