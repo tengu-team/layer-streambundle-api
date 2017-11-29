@@ -30,7 +30,7 @@ def hello():
 
 @app.route("/users", methods=['GET'])
 def get_all_users():
-    res = ds.get_all_fridges()
+    res = ds.get_all_users()
     return create_response(200, res)
 
 
