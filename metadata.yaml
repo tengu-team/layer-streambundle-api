@@ -1,8 +1,8 @@
 name: streambundle-api
-summary: This charm will deploy the API for the streambundle.
+summary: This charm will deploy the API for the Node-RED bundle.
 maintainer: Sébastien Pattyn <sebastien.pattyn@tengu.io>
 description: |
-  This charm will deploy the API for the streambundle.
+  This charm will deploy the API for the Node-RED bundle.
 tags:
   - misc
 subordinate: false

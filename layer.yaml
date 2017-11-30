@@ -1,4 +1,5 @@
 includes: ['layer:basic', 'layer:apt', 'layer:nginx-passenger', 'interface:http', 'interface:mongodb-database']
+repo: https://github.com/tengu-team/layer-streambundle-api.git
 options:
   apt:
     packages: ['python3-pip']
