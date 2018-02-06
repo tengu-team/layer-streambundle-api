@@ -31,35 +31,38 @@ def hello():
 @app.route("/users", methods=['GET'])
 def get_all_users():
     res = ds.get_all_users()
-    return create_response(200, res)
+    return create_response(200, res, True)
 
 
 @app.route("/users/<user>", methods=['GET'])
 def get_user(user):
     res = ds.get_user(user)
-    return create_response(200, res)
+    return create_response(200, res, True)
 
 
 @app.route("/tags", methods=['GET'])
 def get_tags():
     res = ds.get_all_tags()
-    return create_response(200, res)
+    return create_response(200, res, True)
 
 
-@app.route("/tag/<tag>", methods=['GET'])
+@app.route("/tags/<tag>", methods=['GET'])
 def get_tag(tag):
     res = ds.get_tag(tag)
-    return create_response(200, res)
+    return create_response(200, res, True)
 
 
-@app.route("/users/<user>/topics", methods=['GET'])
-def get_user_topics(user):
-    res = ds.get_user_topics(user)
-    return create_response(200, res)
+# @app.route("/users/<user>/topics", methods=['GET'])
+# def get_user_topics(user):
+#     res = ds.get_user_topics(user)
+#     return create_response(200, res, True)
 
 
-def create_response(stat, res):
-    return_object = json.dumps(res)
+def create_response(stat, res, is_json=False):
+    if not is_json:
+        return_object = json.dumps(res)
+    else:
+        return_object = res
     return Response(return_object,
                     status=stat,
                     mimetype='application/json')

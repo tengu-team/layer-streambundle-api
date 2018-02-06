@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # pylint: disable=c0111,c0103,c0301,e0401
 from pymongo import MongoClient
+from bson.json_util import dumps
 from streambundle_api import settings
 
 def connect_to_db():
@@ -29,11 +30,12 @@ def get_all_users():
     for col in collections:
         if col.startswith('author'):
             result.append(col.split('_')[1])
-    return result
+    return dumps(result)
 
 def get_user(user):
     db = connect_to_db()
-    return db['author_{}'.format(user)]
+    collection = db['author_{}'.format(user)]
+    return dumps(collection.find())
 
 def get_all_tags():
     db = connect_to_db()
@@ -42,13 +44,13 @@ def get_all_tags():
     for col in collections:
         if col.startswith('tag'):
             result.append(col.split('_')[1])
-    return result
+    return dumps(result)
 
 def get_tag(tag):
     db = connect_to_db()
-    return db['tag_{}'.format(tag)]
+    collection = db['tag_{}'.format(tag)]
+    return dumps(collection.find())
 
 def get_user_topics(user):
-    db = connect_to_db()
-    usr = db[user]
+    usr = get_user(user)
     return usr['topics']
